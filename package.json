@@ -14,5 +14,9 @@
     "express-flash": "^0.0.2",
     "express-session": "^1.11.3",
     "express-validator": "^2.13.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dragos-triteanu/celebrate-pride.git"
   }
 }
