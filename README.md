@@ -1,0 +1,2 @@
+# celebrate-pride
+Pridify app
