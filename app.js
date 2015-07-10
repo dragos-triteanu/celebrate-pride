@@ -5,7 +5,8 @@ var port = process.env.PORT || 3000;
 app.use(express.static('resources'));
 
 app.get('/', function(req, res){
-    res.sendfile('views/home.html');
+    var options = {root:"views"};
+    res.sendFile('home.html',options);
 });
 
 app.listen(port,function(){
