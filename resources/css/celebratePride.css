@@ -1,10 +1,12 @@
-.imageContainer{
+.uploadContainer{
     margin-left: 35%;
 }
 
 .pridifyButton{
-    margin-top: 10%;
-    width: 200px;
-    height: 50px;
-    position: absolute;
+    margin-left: 47%;
 }
+
+#holder { border: 10px dashed #ccc; width: 510px; min-height: 300px; margin: 20px auto;padding-left: 15px;padding-right: 15px;}
+#holder.hover { border: 10px dashed #EC6018; }
+#holder img { display: block; margin: 10px auto;  max-width: 510px; }
+#holder p { margin: 10px; font-size: 14px; }

@@ -1,11 +1,47 @@
 /**
  * Created by Dragos on 7/2/2015.
  */
-$( document ).ready(function() {
+    function previewfile(file) {
+        if (tests.filereader === true && acceptedTypes[file.type] === true) {
+            var reader = new FileReader();
+            $('#holder').find('img').remove();
+            reader.onload = function (event) {
+                 var image = new Image();
+                 image.src = event.target.result;
+                 image.className ='pridefyImage';
+                 image.id ='pridifyImage';
+                 holder.appendChild(image);
+                };
+            reader.readAsDataURL(file)
+     }  else {
+        holder.innerHTML += '<p>Uploaded ' + file.name + ' ' + (file.size ? (file.size/1024|0) + 'K' : '');
+        console.log(file); }
+     }
 
-    $(".fileUpload").change(function(){
-        readURL(this);
-    });
+    var holder =  document.getElementById('holder'),
+        tests = {
+            filereader: typeof FileReader != 'undefined',
+            dnd: 'draggable' in document.createElement('span'),
+            formdata: !!window.FormData,
+            progress: "upload" in new XMLHttpRequest
+        },
+        acceptedTypes = {
+            'image/png': true,
+            'image/jpeg': true,
+            'image/gif': true
+        }
+
+    if (tests.dnd) {
+        holder.ondragover = function () {
+            this.className = 'hover';
+            return false;
+        };
+        holder.ondrop = function (e) {
+            e.preventDefault();
+            previewfile(e.dataTransfer.files[0]);
+        }
+
+$( document ).ready(function() {
 
     $("#pridifyButton").on("click",function(){
         //Has browser issues on Firefox
@@ -22,13 +58,4 @@ $( document ).ready(function() {
     });
 });
 
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        reader.onload = function (e) {
-            $('.pridefyImage').attr('src', e.target.result);
-        }
-
-        reader.readAsDataURL(input.files[0]);
-    }
 }
